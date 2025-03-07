@@ -17,7 +17,7 @@ export function AttendanceProvider({ children }) {
       setLoading(true);
       const formattedDate = format(new Date(date), 'yyyy-MM-dd');
       const query = period ? `?date=${formattedDate}&period=${period}` : `?date=${formattedDate}`;
-      const response = await fetch(`/api/attendance${query}`);
+      const response = await fetch(`https://cga-16hm.onrender.com/attendance${query}`);
       if (!response.ok) throw new Error('Failed to fetch attendance');
       const data = await response.json();
       const formattedRecords = formatAttendanceData(data, formattedDate, period);
@@ -52,7 +52,7 @@ export function AttendanceProvider({ children }) {
     try {
       setLoading(true);
       const formattedDate = format(new Date(date), 'yyyy-MM-dd');
-      const response = await fetch('/api/attendance', {
+      const response = await fetch('https://cga-16hm.onrender.com/attendance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ studentId, date: formattedDate, period, status, timeRange }),
@@ -71,7 +71,7 @@ export function AttendanceProvider({ children }) {
     try {
       setLoading(true);
       const formattedDate = format(new Date(date), 'yyyy-MM-dd');
-      const response = await fetch('/api/attendance/bulk', {
+      const response = await fetch('https://cga-16hm.onrender.com/attendance/bulk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ date: formattedDate, period, studentsStatus, timeRange }),

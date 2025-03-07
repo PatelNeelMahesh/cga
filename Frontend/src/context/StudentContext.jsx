@@ -18,7 +18,7 @@ export function StudentProvider({ children }) {
   const fetchStudents = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/students');
+      const response = await fetch('https://cga-16hm.onrender.com/students');
       if (!response.ok) throw new Error('Failed to fetch students');
       const data = await response.json();
       setStudents(Array.isArray(data) ? data : []);
@@ -34,7 +34,7 @@ export function StudentProvider({ children }) {
   const addStudent = async (student) => {
     try {
       setLoading(true);
-      const response = await fetch('/api/students', {
+      const response = await fetch('https://cga-16hm.onrender.com/students', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(student),
@@ -52,7 +52,7 @@ export function StudentProvider({ children }) {
   const updateStudent = async (updatedStudent) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/students/${updatedStudent.id}`, {
+      const response = await fetch(`https://cga-16hm.onrender.com/students/${updatedStudent.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedStudent),
@@ -73,7 +73,7 @@ export function StudentProvider({ children }) {
   const deleteStudent = async (id) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/students/${id}`, {
+      const response = await fetch(`https://cga-16hm.onrender.com/students/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete student');
@@ -89,7 +89,7 @@ export function StudentProvider({ children }) {
   const bulkAddStudents = async (newStudents) => {
     try {
       setLoading(true);
-      const response = await fetch('/api/students/bulk', {
+      const response = await fetch('https://cga-16hm.onrender.com/students/bulk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newStudents),
@@ -107,7 +107,7 @@ export function StudentProvider({ children }) {
   const deleteManyStudents = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/students/many', {
+      const response = await fetch('https://cga-16hm.onrender.com/students/many', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });
